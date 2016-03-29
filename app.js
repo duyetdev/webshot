@@ -3,7 +3,7 @@ const path = require('path');
 const app = require('koa')();
 
 const middlewares = require('koa-middlewares');
-var serve = require('koa-static-folder');
+var serve = require('koa-static');
 const crypto = require('crypto');
 var webshot = require('webshot');
 var router = require('koa-router')();
@@ -29,7 +29,7 @@ router.all('/', function *(next) {
 
 	// Screenshot path
 	var shot_path = __dirname + '/shot/'+ result.hash +'.png';
-	result.webshot = this.request.origin + '/shot/' + result.hash +'.png';
+	result.webshot = this.request.origin + '/' + result.hash +'.png';
 
 	webshot(url, shot_path, function(err) {
 		// screenshot now saved
@@ -54,9 +54,6 @@ app.use(middlewares.conditional());
 app.use(middlewares.etag());
 app.use(middlewares.bodyParser({
 	limit: '5mb'
-}));
-app.use(middlewares.session({
-	store: middlewares.RedisStore()
 }));
 
 app.context.assetspath = path.join(__dirname, 'shot');
