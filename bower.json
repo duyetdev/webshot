@@ -1,0 +1,24 @@
+{
+  "name": "webshot",
+  "description": "Web Screenshot as a service",
+  "main": "app.js",
+  "authors": [
+    "Van-Duyet Le <me@duyetdev.com>"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "webshot",
+    "screenshot",
+    "web2png",
+    "shot"
+  ],
+  "homepage": "https://github.com/duyetdev/webshot",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "webshot-saas",
+  "version": "1.0.0",
+  "description": "Web Screenshot as a service",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duyetdev/webshot.git"
+  },
+  "keywords": [
+    "webshot",
+    "screenshot",
+    "web2png",
+    "shot"
+  ],
+  "author": "Van-Duyet Le <me@duyetdev.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/duyetdev/webshot/issues"
+  },
+  "homepage": "https://github.com/duyetdev/webshot#readme",
+  "dependencies": {
+    "koa": "^1.2.0",
+    "koa-middlewares": "^4.1.0",
+    "koa-router": "^5.4.0",
+    "webshot": "^0.18.0"
+  }
+}
