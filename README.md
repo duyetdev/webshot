@@ -3,7 +3,7 @@ Web Screenshot as a service.
 
 # Usage
 ```
-https://webshot.jslab.xyz/?url=http://duyetdev.com
+https://webshot.saveto.co/?url=http://duyetdev.com
 ```
 
 # Pricing
