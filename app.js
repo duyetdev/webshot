@@ -33,6 +33,11 @@ router.all('/', function *(next) {
 	var shot_path = __dirname + '/shot/'+ result.hash +'.png';
 	result.webshot = this.request.origin + '/' + result.hash +'.png';
 
+	var is_shoted = fs.existsSync(shot_path);
+	if (is_shoted) {
+		return webshotResult(this, result, is_json);
+	}
+
 	webshot(url, shot_path, function(err) {
 		// screenshot now saved
 	});
@@ -48,21 +53,28 @@ router.all('/', function *(next) {
     while (e = yield event(renderStream)) {
         switch (e.type) {
             case 'end':
-            	if (is_json) return this.body = result;
-				else return this.redirect(result.webshot);
+            	return webshotResult(this, result, is_json);
                 break;
 
             case 'error':
             default:
-            	var message = 'Something went wrong';
-                if (is_json) {
-                	this.status = 500;
-                	return this.body = {message: message};
-                } else this.body = message;
+            	return webshotError(this, 'Something went wrong', is_json);
                 break;
         }
     }
 });
+
+function webshotResult(app, result, is_json) {
+	if (is_json) return app.body = result;
+	else return app.redirect(result.webshot);
+}
+
+function webshotError(app, message, is_json) {
+	this.status = 500;
+
+	if (is_json) return app.body = {message: message};
+	else return app.body = message;
+}
 
 app
   .use(router.routes())
