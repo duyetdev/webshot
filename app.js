@@ -33,8 +33,7 @@ router.all('/', function *(next) {
 	var shot_path = __dirname + '/shot/'+ result.hash +'.png';
 	result.webshot = this.request.origin + '/' + result.hash +'.png';
 
-	var is_shoted = fs.existsSync(shot_path);
-	if (is_shoted) {
+	if (fs.existsSync(shot_path)) {
 		return webshotResult(this, result, is_json);
 	}
 
@@ -58,7 +57,11 @@ router.all('/', function *(next) {
 
             case 'error':
             default:
-            	return webshotError(this, 'Something went wrong', is_json);
+            	// Re check 
+            	if (fs.existsSync(shot_path)) {
+            		return webshotResult(this, result, is_json);
+            	} else 
+            		return webshotError(this, 'Something went wrong', is_json);
                 break;
         }
     }
