@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/duyetdev/webshot#readme",
   "dependencies": {
+    "co-event": "^0.1.0",
     "koa": "^1.2.0",
     "koa-middlewares": "^4.1.0",
     "koa-router": "^5.4.0",

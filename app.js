@@ -1,7 +1,9 @@
 const http = require('http');
 const path = require('path');
+const fs = require('fs');
 const app = require('koa')();
 
+var event = require('co-event');
 const middlewares = require('koa-middlewares');
 var serve = require('koa-static');
 const crypto = require('crypto');
@@ -35,10 +37,31 @@ router.all('/', function *(next) {
 		// screenshot now saved
 	});
 
-	if (is_json) return this.body = result;
-	
-	// Redirect to screenshot
-	this.redirect(result.webshot);
+	var renderStream = webshot(url);
+	var file = fs.createWriteStream(shot_path, {encoding: 'binary'});
+
+	renderStream.on('data', function(data) {
+		file.write(data.toString('binary'), 'binary');
+	});
+
+	var e;
+    while (e = yield event(renderStream)) {
+        switch (e.type) {
+            case 'end':
+            	if (is_json) return this.body = result;
+				else return this.redirect(result.webshot);
+                break;
+
+            case 'error':
+            default:
+            	var message = 'Something went wrong';
+                if (is_json) {
+                	this.status = 500;
+                	return this.body = {message: message};
+                } else this.body = message;
+                break;
+        }
+    }
 });
 
 app
