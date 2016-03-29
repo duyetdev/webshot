@@ -1,4 +1,4 @@
-# webshot
+# Webshot
 Web Screenshot as a service.
 
 # Usage
