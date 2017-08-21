@@ -4,7 +4,9 @@
   "description": "Web Screenshot as a service",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -29,6 +31,8 @@
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "koa-static-folder": "^0.1.6",
-    "webshot": "^0.18.0"
-  }
+    "webshot": "^0.18.0",
+    "snyk": "^1.39.0"
+  },
+  "snyk": true
 }
