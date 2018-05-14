@@ -25,7 +25,7 @@
   "dependencies": {
     "co-event": "^0.1.0",
     "koa": "^1.2.0",
-    "koa-middlewares": "^4.1.0",
+    "koa-middlewares": "^5.0.0",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
     "koa-static-folder": "^0.1.6",
