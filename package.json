@@ -24,7 +24,7 @@
   "homepage": "https://github.com/duyetdev/webshot#readme",
   "dependencies": {
     "co-event": "^0.1.0",
-    "koa": "^1.2.0",
+    "koa": "^2.0.0",
     "koa-middlewares": "^5.0.0",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
