@@ -1,0 +1,11 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.5
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - koa-middlewares > koa-redis > debug:
+        patched: '2019-09-24T18:13:03.983Z'
+  'npm:ms:20170412':
+    - koa-middlewares > koa-redis > debug > ms:
+        patched: '2019-09-24T18:13:03.983Z'
