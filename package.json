@@ -32,7 +32,7 @@
     "koa-static": "^5.0.0",
     "koa-static-folder": "^0.1.6",
     "webshot": "^0.18.0",
-    "snyk": "^1.228.5"
+    "snyk": "^1.231.0"
   },
   "snyk": true
 }
